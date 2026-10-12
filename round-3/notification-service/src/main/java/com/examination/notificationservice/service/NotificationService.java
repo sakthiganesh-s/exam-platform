@@ -1,0 +1,3 @@
+package com.examination.notificationservice.service;
+import com.examination.notificationservice.model.Notification; import com.examination.notificationservice.repository.NotificationRepository; import org.springframework.stereotype.Service; import java.util.List;
+@Service public class NotificationService { private final NotificationRepository repository; public NotificationService(NotificationRepository r){repository=r;} public List<Notification> all(){return repository.findAll();} public Notification byId(Long id){return repository.findById(id).orElseThrow();} public Notification save(Notification x){return repository.save(x);} }

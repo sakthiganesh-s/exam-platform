@@ -1,0 +1,3 @@
+package com.examination.candidateservice.controller;
+import com.examination.candidateservice.model.Candidate; import com.examination.candidateservice.service.CandidateService; import org.springframework.http.HttpStatus; import org.springframework.web.bind.annotation.*; import java.util.List;
+@RestController @RequestMapping("/api/candidates") public class CandidateController { private final CandidateService service; public CandidateController(CandidateService s){service=s;} @GetMapping public List<Candidate> all(){return service.all();} @GetMapping("/{id}") public Candidate get(@PathVariable Long id){return service.byId(id);} @PostMapping @ResponseStatus(HttpStatus.CREATED) public Candidate create(@RequestBody Candidate x){return service.save(x);} }

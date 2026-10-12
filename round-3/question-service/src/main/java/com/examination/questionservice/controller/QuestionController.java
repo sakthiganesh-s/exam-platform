@@ -1,0 +1,3 @@
+package com.examination.questionservice.controller;
+import com.examination.questionservice.model.Question; import com.examination.questionservice.service.QuestionService; import org.springframework.http.HttpStatus; import org.springframework.web.bind.annotation.*; import java.util.List;
+@RestController @RequestMapping("/api/questions") public class QuestionController { private final QuestionService service; public QuestionController(QuestionService s){service=s;} @GetMapping public List<Question> all(){return service.all();} @GetMapping("/{id}") public Question get(@PathVariable Long id){return service.byId(id);} @PostMapping @ResponseStatus(HttpStatus.CREATED) public Question create(@RequestBody Question x){return service.save(x);} }

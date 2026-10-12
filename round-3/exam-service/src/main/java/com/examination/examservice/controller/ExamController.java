@@ -1,0 +1,3 @@
+package com.examination.examservice.controller;
+import com.examination.examservice.model.Exam; import com.examination.examservice.service.ExamService; import org.springframework.http.HttpStatus; import org.springframework.web.bind.annotation.*; import java.util.List;
+@RestController @RequestMapping("/api/exams") public class ExamController { private final ExamService service; public ExamController(ExamService s){service=s;} @GetMapping public List<Exam> all(){return service.all();} @GetMapping("/{id}") public Exam get(@PathVariable Long id){return service.byId(id);} @PostMapping @ResponseStatus(HttpStatus.CREATED) public Exam create(@RequestBody Exam x){return service.save(x);} }

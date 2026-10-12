@@ -1,0 +1,3 @@
+package com.examination.resultservice.controller;
+import com.examination.resultservice.model.Result; import com.examination.resultservice.service.ResultService; import org.springframework.http.HttpStatus; import org.springframework.web.bind.annotation.*; import java.util.List;
+@RestController @RequestMapping("/api/results") public class ResultController { private final ResultService service; public ResultController(ResultService s){service=s;} @GetMapping public List<Result> all(){return service.all();} @GetMapping("/{id}") public Result get(@PathVariable Long id){return service.byId(id);} @PostMapping @ResponseStatus(HttpStatus.CREATED) public Result create(@RequestBody Result x){return service.save(x);} }
